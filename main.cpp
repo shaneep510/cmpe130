@@ -6,10 +6,25 @@ using namespace std;
 typedef map<int,pair<int,string>> Structure;
 Structure defaultMap;
 
-void UserInput(int,int,string) {
+void UserInputDefault() {
     int newInsert = defaultMap.size() + 1;
+    int temp1;
+    string temp2;
+    cout << "Enter The Fruit You Want To Add To The Dictionary: " << endl;
+    cin >> temp2;
+    cout << "How Many Days Does It Take For " << temp2 <<  " To Go Bad? Enter Numeric Value" << endl;
+    cin >> temp1;
+    defaultMap[newInsert] = make_pair(temp1,temp2);
 };
 
+void PrintDefaultMap() {
+    int size = defaultMap.size();
+
+    for (int i = 1; i <= size; i++) {
+        pair<int, string> printItem = defaultMap[i];
+        cout << "Fruit: " << printItem.second << "\t" << "Days Till Rotten: " << printItem.first << endl;
+    }
+}
 int main() {
 
     defaultMap[1] = make_pair(10, "Bananas");
@@ -19,12 +34,10 @@ int main() {
     defaultMap[5] = make_pair(3, "Plums");
     defaultMap[6] = make_pair(1, "Deez");
 
-    int size = defaultMap.size();
-
-    for (int i = 1; i <= size; i++) {
-        pair<int, string> printItem = defaultMap[i];
-        cout << "Fruit: " << printItem.second << "\t" << "Days Till Rotten: " << printItem.first << endl;
-    }
+    UserInputDefault();
+    PrintDefaultMap();
+    UserInputDefault();
+    PrintDefaultMap();
 
     return 0;
 }
