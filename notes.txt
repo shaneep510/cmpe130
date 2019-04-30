@@ -1,0 +1,2 @@
+Using maps because in feedback, professor told us to use Dictionaries. In C++, dictionaries are essentially maps./
+
