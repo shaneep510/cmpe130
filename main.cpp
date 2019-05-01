@@ -19,14 +19,16 @@ void UserInputDefault() {
 }
 
 void UserInputInventory() {
+    int size = defaultMap.size();
+    for (int i = 1; i <= size; i++) {
+        pair<int, string> printItem = defaultMap[i];
+        cout << "Item: " << i << "\t"  << "Fruit: " << printItem.second << "\t" << "Days Till Rotten: " << printItem.first << endl;
+    }
     int newInsert = inventory.size() + 1;
     int temp1;
-    string temp2;
-    cout << "Enter The Fruit You Want To Add To The Dictionary: " << endl;
-    cin >> temp2;
-    cout << "How Many Days Does It Take For " << temp2 <<  " To Go Bad? Enter Numeric Value" << endl;
+    cout << "Enter The Item Number Of The Fruit You Bought: " << endl;
     cin >> temp1;
-    inventory[newInsert] = make_pair(temp1,temp2);
+    inventory[newInsert] = defaultMap[temp1];
 }
 
 void PrintDefaultMap() {
@@ -64,7 +66,7 @@ int main() {
         cout << " 3 - Insert Entry Into Inventory" << endl;
         cout << " 4 - Print Inventory" << endl;
         cout << " 5 - Done" << endl;
-        cout << " Enter Your Choice & Press Enter: ";
+        cout << " Enter Your Choice & Press Enter: " << endl;
 
         cin >> choice;
         cout << endl << endl;
