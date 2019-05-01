@@ -48,6 +48,34 @@ void PrintInventory() {
         cout << "Fruit: " << printItem.second << "\t" << "Days Till Rotten: " << printItem.first << endl;
     }
 }
+
+void swap(pair<int, string> SpotOne, pair<int, string> SpotTwo)
+{
+    pair<int, string> temp = SpotOne;
+    SpotOne = SpotTwo;
+    SpotTwo = temp;
+}
+
+void inventorySort()
+{
+    int size = inventory.size();
+    for(int i = 0; i < size; i++)
+    {
+        for(int j = i+1; j < size; j++)
+        {
+            pair<int, string> sortItem1 = inventory[j];
+            cout << sortItem1.first << endl;
+            pair<int, string> sortItem2 = inventory[j+1];
+            cout << sortItem2.first << endl;
+            if(sortItem1.first > sortItem2.first)
+            {
+                pair<int, string> temp = inventory[j];
+                inventory[j] = inventory[j+1];
+                inventory[j+1] = temp;
+            }
+        }
+    }
+}
 int main() {
 
     defaultMap[1] = make_pair(10, "Bananas");
@@ -65,7 +93,8 @@ int main() {
         cout << " 2 - Print Default Dictionary" << endl;
         cout << " 3 - Insert Entry Into Inventory" << endl;
         cout << " 4 - Print Inventory" << endl;
-        cout << " 5 - Done" << endl;
+        cout << " 5 - Sort" << endl;
+        cout << " 6 - Done" << endl;
         cout << " Enter Your Choice & Press Enter: " << endl;
 
         cin >> choice;
@@ -86,13 +115,16 @@ int main() {
                 PrintInventory();
                 break;
             case 5:
+                inventorySort();
+                break;
+            case 6:
                 cout << "End of Program.\n";
                 doneFlag = false;
                 break;
             default:
-                cout << "*******************************" << endl;
-                cout << "Invalid Choice. Choose Again." << endl;
-                cout << "*******************************" << endl;
+                cout << "********************************" << endl;
+                cout << "**Invalid Choice. Choose Again**" << endl;
+                cout << "********************************" << endl;
                 break;
         }
     }
