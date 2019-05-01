@@ -34,10 +34,34 @@ int main() {
     defaultMap[5] = make_pair(3, "Plums");
     defaultMap[6] = make_pair(1, "Deez");
 
-    UserInputDefault();
-    PrintDefaultMap();
-    UserInputDefault();
-    PrintDefaultMap();
+    int choice;
+    bool doneFlag = true;
+    while (doneFlag != false) {
+        cout << "*******************************\n";
+        cout << " 1 - Insert Entry Into Default Dictionary" << endl;
+        cout << " 2 - Print" << endl;
+        cout << " 3 - Done" << endl;
+        cout << " Enter Your Choice & Press Enter: ";
 
+        cin >> choice;
+
+        switch (choice)
+        {
+            case 1:
+                UserInputDefault();
+                break;
+            case 2:
+                PrintDefaultMap();
+                break;
+            case 3:
+                cout << "End of Program.\n";
+                doneFlag = false;
+                break;
+            default:
+                cout << "Invalid Choice. Choose Again." << endl;
+                cin >> choice;
+                break;
+        }
+    }
     return 0;
 }
