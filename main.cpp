@@ -5,6 +5,7 @@ using namespace std;
 
 typedef map<int,pair<int,string>> Structure;
 Structure defaultMap;
+Structure inventory;
 
 void UserInputDefault() {
     int newInsert = defaultMap.size() + 1;
@@ -15,13 +16,33 @@ void UserInputDefault() {
     cout << "How Many Days Does It Take For " << temp2 <<  " To Go Bad? Enter Numeric Value" << endl;
     cin >> temp1;
     defaultMap[newInsert] = make_pair(temp1,temp2);
-};
+}
+
+void UserInputInventory() {
+    int newInsert = inventory.size() + 1;
+    int temp1;
+    string temp2;
+    cout << "Enter The Fruit You Want To Add To The Dictionary: " << endl;
+    cin >> temp2;
+    cout << "How Many Days Does It Take For " << temp2 <<  " To Go Bad? Enter Numeric Value" << endl;
+    cin >> temp1;
+    inventory[newInsert] = make_pair(temp1,temp2);
+}
 
 void PrintDefaultMap() {
     int size = defaultMap.size();
 
     for (int i = 1; i <= size; i++) {
         pair<int, string> printItem = defaultMap[i];
+        cout << "Fruit: " << printItem.second << "\t" << "Days Till Rotten: " << printItem.first << endl;
+    }
+}
+
+void PrintInventory() {
+    int size = inventory.size();
+
+    for (int i = 1; i <= size; i++) {
+        pair<int, string> printItem = inventory[i];
         cout << "Fruit: " << printItem.second << "\t" << "Days Till Rotten: " << printItem.first << endl;
     }
 }
@@ -32,18 +53,21 @@ int main() {
     defaultMap[3] = make_pair(7, "Apricot");
     defaultMap[4] = make_pair(8, "Oranges");
     defaultMap[5] = make_pair(3, "Plums");
-    defaultMap[6] = make_pair(1, "Deez");
+    defaultMap[6] = make_pair(1, "Lemons");
 
     int choice;
     bool doneFlag = true;
-    while (doneFlag != false) {
-        cout << "*******************************\n";
+    while (doneFlag) {
+        cout << "*******************************" << endl;
         cout << " 1 - Insert Entry Into Default Dictionary" << endl;
-        cout << " 2 - Print" << endl;
-        cout << " 3 - Done" << endl;
+        cout << " 2 - Print Default Dictionary" << endl;
+        cout << " 3 - Insert Entry Into Inventory" << endl;
+        cout << " 4 - Print Inventory" << endl;
+        cout << " 5 - Done" << endl;
         cout << " Enter Your Choice & Press Enter: ";
 
         cin >> choice;
+        cout << endl << endl;
 
         switch (choice)
         {
@@ -54,12 +78,19 @@ int main() {
                 PrintDefaultMap();
                 break;
             case 3:
+                UserInputInventory();
+                break;
+            case 4:
+                PrintInventory();
+                break;
+            case 5:
                 cout << "End of Program.\n";
                 doneFlag = false;
                 break;
             default:
+                cout << "*******************************" << endl;
                 cout << "Invalid Choice. Choose Again." << endl;
-                cin >> choice;
+                cout << "*******************************" << endl;
                 break;
         }
     }
