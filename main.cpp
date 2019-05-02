@@ -59,19 +59,17 @@ void swap(pair<int, string> SpotOne, pair<int, string> SpotTwo)
 void inventorySort()
 {
     int size = inventory.size();
-    for(int i = 0; i < size; i++)
+    for(int i = 1; i <= size; i++)
     {
-        for(int j = i+1; j < size; j++)
+        for(int j = i+1; j <= size; j++)
         {
-            pair<int, string> sortItem1 = inventory[j];
-            cout << sortItem1.first << endl;
-            pair<int, string> sortItem2 = inventory[j+1];
-            cout << sortItem2.first << endl;
-            if(sortItem1.first > sortItem2.first)
+            pair<int, string> sortItem1 = inventory[i];
+            pair<int, string> sortItem2 = inventory[j];
+            if(sortItem2.first < sortItem1.first)
             {
                 pair<int, string> temp = inventory[j];
-                inventory[j] = inventory[j+1];
-                inventory[j+1] = temp;
+                inventory[j] = inventory[i];
+                inventory[i] = temp;
             }
         }
     }
@@ -116,6 +114,7 @@ int main() {
                 break;
             case 5:
                 inventorySort();
+		PrintInventory();
                 break;
             case 6:
                 cout << "End of Program.\n";
