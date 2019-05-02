@@ -114,7 +114,6 @@ int main() {
                 break;
             case 5:
                 inventorySort();
-		PrintInventory();
                 break;
             case 6:
                 cout << "End of Program.\n";
