@@ -49,14 +49,7 @@ void PrintInventory() {
     }
 }
 
-void swap(pair<int, string> SpotOne, pair<int, string> SpotTwo)
-{
-    pair<int, string> temp = SpotOne;
-    SpotOne = SpotTwo;
-    SpotTwo = temp;
-}
-
-void inventorySort()
+void inventorySelectionSort()
 {
     int size = inventory.size();
     for(int i = 1; i <= size; i++)
@@ -74,6 +67,8 @@ void inventorySort()
         }
     }
 }
+
+
 int main() {
 
     defaultMap[1] = make_pair(10, "Bananas");
@@ -91,7 +86,7 @@ int main() {
         cout << " 2 - Print Default Dictionary" << endl;
         cout << " 3 - Insert Entry Into Inventory" << endl;
         cout << " 4 - Print Inventory" << endl;
-        cout << " 5 - Sort" << endl;
+        cout << " 5 - Inventory Selection Sort" << endl;
         cout << " 6 - Done" << endl;
         cout << " Enter Your Choice & Press Enter: " << endl;
 
@@ -113,7 +108,7 @@ int main() {
                 PrintInventory();
                 break;
             case 5:
-                inventorySort();
+                inventorySelectionSort();
                 break;
             case 6:
                 cout << "End of Program.\n";
