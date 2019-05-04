@@ -1,75 +1,17 @@
 #include <iostream>
+#include <string>
 #include <map>
+#include "maped.h"
 
 using namespace std;
 
-typedef map<int,pair<int,string>> Structure;
-Structure defaultMap;
-Structure inventory;
-
-void UserInputDefault() {
-    int newInsert = defaultMap.size() + 1;
-    int temp1;
-    string temp2;
-    cout << "Enter The Fruit You Want To Add To The Dictionary: " << endl;
-    cin >> temp2;
-    cout << "How Many Days Does It Take For " << temp2 <<  " To Go Bad? Enter Numeric Value" << endl;
-    cin >> temp1;
-    defaultMap[newInsert] = make_pair(temp1,temp2);
-}
-
-void UserInputInventory() {
-    int size = defaultMap.size();
-    for (int i = 1; i <= size; i++) {
-        pair<int, string> printItem = defaultMap[i];
-        cout << "Item: " << i << "\t"  << "Fruit: " << printItem.second << "\t" << "Days Till Rotten: " << printItem.first << endl;
-    }
-    int newInsert = inventory.size() + 1;
-    int temp1;
-    cout << "Enter The Item Number Of The Fruit You Bought: " << endl;
-    cin >> temp1;
-    inventory[newInsert] = defaultMap[temp1];
-}
-
-void PrintDefaultMap() {
-    int size = defaultMap.size();
-
-    for (int i = 1; i <= size; i++) {
-        pair<int, string> printItem = defaultMap[i];
-        cout << "Fruit: " << printItem.second << "\t" << "Days Till Rotten: " << printItem.first << endl;
-    }
-}
-
-void PrintInventory() {
-    int size = inventory.size();
-
-    for (int i = 1; i <= size; i++) {
-        pair<int, string> printItem = inventory[i];
-        cout << "Fruit: " << printItem.second << "\t" << "Days Till Rotten: " << printItem.first << endl;
-    }
-}
-
-void inventorySelectionSort()
-{
-    int size = inventory.size();
-    for(int i = 1; i <= size; i++)
-    {
-        for(int j = i+1; j <= size; j++)
-        {
-            pair<int, string> sortItem1 = inventory[i];
-            pair<int, string> sortItem2 = inventory[j];
-            if(sortItem2.first < sortItem1.first)
-            {
-                pair<int, string> temp = inventory[j];
-                inventory[j] = inventory[i];
-                inventory[i] = temp;
-            }
-        }
-    }
-}
 
 
 int main() {
+
+    std::cout << "Welcome" << std::endl << std::endl; //When you open the app "Welcome" fades in & out
+    												   //boom boom pow rave music starts
+
 
     defaultMap[1] = make_pair(10, "Bananas");
     defaultMap[2] = make_pair(6, "Apples");
@@ -81,14 +23,14 @@ int main() {
     int choice;
     bool doneFlag = true;
     while (doneFlag) {
-        cout << "*******************************" << endl;
-        cout << " 1 - Insert Entry Into Default Dictionary" << endl;
-        cout << " 2 - Print Default Dictionary" << endl;
-        cout << " 3 - Insert Entry Into Inventory" << endl;
-        cout << " 4 - Print Inventory" << endl;
-        cout << " 5 - Inventory Selection Sort" << endl;
-        cout << " 6 - Done" << endl;
-        cout << " Enter Your Choice & Press Enter: " << endl;
+        cout << "1 - Insert Entry Into Default Dictionary" << endl;
+        cout << "2 - Print Default Dictionary" << endl;
+        cout << "3 - Insert Entry Into Inventory" << endl;
+        cout << "4 - Print Inventory" << endl;
+        cout << "5 - Inventory Selection Sort" << endl;
+        cout << "6 - Amend Data" << endl;
+        cout << "7 - Done" << endl;
+        cout << "Enter Your Choice & Press Enter: ";
 
         cin >> choice;
         cout << endl << endl;
@@ -111,13 +53,16 @@ int main() {
                 inventorySelectionSort();
                 break;
             case 6:
+            	amendDefaultMap();
+            	break;
+            case 7:
                 cout << "End of Program.\n";
                 doneFlag = false;
                 break;
             default:
                 cout << "********************************" << endl;
                 cout << "**Invalid Choice. Choose Again**" << endl;
-                cout << "********************************" << endl;
+                cout << "********************************" << endl << std::endl;
                 break;
         }
     }
